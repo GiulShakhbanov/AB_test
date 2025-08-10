@@ -1,4 +1,4 @@
-#A/B Test Metrics and Fraud Filtering
+A/B Test Metrics and Fraud Filtering
 
 This project assembles a full workflow for processing transactional data, identifying anomalous user activity, and calculating A/B test metrics on a cleaned dataset. The approach balances statistical rigor with practical data engineering, producing a framework that can be adapted to diverse experimental settings.
 
