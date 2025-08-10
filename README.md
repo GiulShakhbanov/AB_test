@@ -1,8 +1,8 @@
-A/B Test Metrics and Fraud Filtering
+**A/B Test Metrics and Fraud Filtering**
 
 This project assembles a full workflow for processing transactional data, identifying anomalous user activity, and calculating A/B test metrics on a cleaned dataset. The approach balances statistical rigor with practical data engineering, producing a framework that can be adapted to diverse experimental settings.
 
-Purpose
+**Purpose**
 
 The primary aim is to provide a transparent, reproducible method for:
 	•	Aggregating monetary and cash-based transactions from raw logs.
@@ -10,7 +10,8 @@ The primary aim is to provide a transparent, reproducible method for:
 	•	Excluding detected anomalies before group-level metric computation.
 	•	Generating key performance indicators for experimental evaluation.
 
-Data Pipeline
+**Data Pipeline**
+
 	1.	Data ingestion: Raw transaction files are read in columnar format for efficiency. Separate datasets capture money movements, cash transactions, platform details, and group assignments.
 	2.	Aggregation: Transactions are grouped by user and summarized to produce total amounts, counts, and unique active days.
 	3.	Normalization: Behavioral counts are standardized to allow cross-comparison across variables with different scales.
@@ -18,26 +19,33 @@ Data Pipeline
 	5.	Data cleaning: Flagged users are removed from subsequent analysis to preserve metric integrity.
 	6.	Metric computation: Core indicators include ARPU, ARPPU, and average cash per user, computed at the experimental group level.
 
-Statistical Rationale
+**Statistical Rationale**
 
 The project employs non-parametric thresholds for anomaly detection, avoiding distributional assumptions that often fail in real-world behavioral data. Group metrics are computed only after data sanitization, ensuring that comparisons reflect the intended experimental treatment rather than noise introduced by fraudulent activity.
 
-Output
+**Output**
 
 The workflow produces:
+
 	•	A cleaned dataset excluding anomalous users.
 	•	A metrics table summarizing ARPU, ARPPU, and average cash for each experimental group.
-	•	A CSV export for downstream reporting or visualization.
+	•	A CSV export for downstream reporting or visualization. 
+ 
+<img width="550" height="79" alt="Снимок экрана 2025-08-10 в 09 49 43" src="https://github.com/user-attachments/assets/8476d933-85cb-47a6-8d17-43399dd2dced" />
+<img width="475" height="325" alt="Снимок экрана 2025-08-10 в 09 47 39" src="https://github.com/user-attachments/assets/da312c16-1d1f-4cd0-9dd1-9d27e77a9a30" />
 
-Technology
+
+**Technology**
+
 	•	Python for orchestration and analysis.
 	•	Pandas for data manipulation.
 	•	Parquet format for storage efficiency.
 	•	CSV for final output.
 
-Use Cases
+**Use Cases**
 
 While designed for A/B testing in a transactional environment, the logic applies to any context requiring:
+
 	•	Behavioral anomaly detection.
 	•	Group-based metric computation.
 	•	Clean separation of data preparation and analysis.
